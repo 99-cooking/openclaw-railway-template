@@ -161,12 +161,17 @@
           let result;
           try { result = JSON.parse(t); } catch (_e) { result = { ok: false, output: t }; }
           if (result.ok) {
-            this.log += '✓ ' + (result.output || 'Pairing approved successfully') + '\n';
+            const msg = result.output || 'Pairing approved successfully';
+            this.log += '✓ ' + msg + '\n';
+            alert('✓ ' + msg.trim());
           } else {
-            this.log += '✗ Failed: ' + (result.output || result.error || 'Unknown error') + '\n';
+            const msg = result.output || result.error || 'Unknown error';
+            this.log += '✗ Failed: ' + msg + '\n';
+            alert('✗ Pairing failed: ' + msg.trim());
           }
         } catch (e) {
           this.log += '✗ Error: ' + String(e) + '\n';
+          alert('✗ Pairing failed: ' + String(e));
         }
       },
 
