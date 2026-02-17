@@ -26,7 +26,8 @@ RUN curl -fsSL https://mega.nz/linux/repo/Debian_12/amd64/megacmd-Debian_12_amd6
 # Install Railway CLI
 RUN npm install -g @railway/cli
 
-RUN npm install -g openclaw@latest
+RUN npm install -g openclaw@latest \
+  && ln -sfn /usr/local/lib/node_modules/openclaw /openclaw
 
 WORKDIR /app
 
